@@ -7,10 +7,15 @@ import { BoxGray } from "./style";
 import { ListStyled } from "./style";
 import { ButtonPlus } from "./style";
 
+import { useEffect, useState } from "react";
+
 import Menu from "./menu";
 import Header from "./header";
 
+import ModalPlus from "../../components/modais/modalPlus";
+
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 function Home() {
   const usuario = JSON.parse(localStorage.getItem("@kenzieHub:user"));
@@ -24,12 +29,27 @@ function Home() {
     history.push("/");
   }
 
+  function openModal() {
+    setOpen(true);
+  }
+
   console.log(usuario);
+
+  const [open, setOpen] = useState(false);
+  const [techs, setTechs] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://kenziehub.herokuapp.com/users/${usuario.id}`)
+      .then((response) => setTechs(response.data.techs));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   console.log(usuario.techs);
   return (
     <>
       <Container>
+        <ModalPlus open={open} setOpen={setOpen} />
         <Menu goBack={goBack} />
         <Header />
         <BoxAlign>
@@ -38,12 +58,12 @@ function Home() {
               <h4>Tecnologias</h4>
             </div>
             <div>
-              <ButtonPlus>+</ButtonPlus>
+              <ButtonPlus onClick={() => openModal()}>+</ButtonPlus>
             </div>
           </AsideMenu>
           <BoxGray>
             <ListStyled>
-              {usuario.techs.map((tech) => (
+              {techs.map((tech) => (
                 <Tech
                   key={tech.id}
                   id={tech.id}

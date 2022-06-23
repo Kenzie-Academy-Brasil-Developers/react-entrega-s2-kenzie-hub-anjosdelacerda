@@ -37,27 +37,29 @@ function Login({ logged, setLogged }) {
   });
 
   const onSubmitFunction = (data) => {
-    // console.log(data);
+    console.log(data);
 
     axios
-      .post("https://kenziehub.herokuapp.com/sessions", { ...data })
+      .post("https://kenziehub.herokuapp.com/sessions", data)
       .then((response) => {
         // console.log(response);
         // console.log(data);
 
         console.log(response.data.user);
 
-        window.localStorage.setItem("@kenzieHub:home", response.data.token);
+        localStorage.setItem(
+          "@kenzieHub:home",
+          JSON.stringify(response.data.token)
+        );
 
-        window.localStorage.setItem(
+        localStorage.setItem(
           "@kenzieHub:user",
           JSON.stringify(response.data.user)
         );
+        setLogged(true);
+        goToPage("/home");
       })
       .catch((err) => console.log(err));
-
-    setLogged(true);
-    goToPage("/home");
 
     // if (logged) {
     //   return <Redirect to="/home" />;

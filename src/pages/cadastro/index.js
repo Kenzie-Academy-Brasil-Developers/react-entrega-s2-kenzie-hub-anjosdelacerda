@@ -76,16 +76,15 @@ function Cadastro() {
     console.log(data);
 
     axios
-      .post("https://kenziehub.herokuapp.com/users", { ...data })
+      .post("https://kenziehub.herokuapp.com/users", data)
       .then((response) => {
         console.log(response);
         console.log(data);
 
         // window.localStorage.setItem("token", response.data.token);
+        history.push("/");
       })
       .catch((err) => console.log(err));
-
-    return history.push("/");
   };
 
   return (
