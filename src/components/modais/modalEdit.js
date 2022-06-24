@@ -1,7 +1,13 @@
 import { Glass, StyledModal, StyledModalTop } from "./style";
 import { AlignInput } from "../../pages/cadastro/style";
 
-import ButtonForm from "../buttons/buttons";
+// import ButtonForm from "../buttons/buttons";
+
+import ButtonEdit from "../buttons/buttonEdit";
+import ButtonExcluir from "../buttons/buttonExcluir";
+
+import { DivButtons } from "./style";
+
 import { SetPadding } from "./style";
 
 import { useForm } from "react-hook-form";
@@ -10,9 +16,9 @@ import * as yup from "yup";
 
 import axios from "axios";
 
-function ModalPlus(props) {
+function ModalEdit(props) {
   const formSchema = yup.object().shape({
-    title: yup.string().required("campo está vazio"),
+    status: yup.string().required("erro"),
   });
 
   const token = JSON.parse(localStorage.getItem("@kenzieHub:home"));
@@ -25,14 +31,37 @@ function ModalPlus(props) {
     resolver: yupResolver(formSchema),
   });
 
+  function onExcludeFunction() {
+    console.log(token);
+
+    axios
+      .delete(
+        `https://kenziehub.herokuapp.com/users/techs/${props.momentId}`,
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+        // console.log(token)
+      )
+      .then((response) => {
+        console.log(response);
+        props.closeModalTech();
+      })
+      .catch((err) => console.log(err));
+  }
+
   const onSubmitFunction = (data) => {
     // console.log(data);
 
     // console.log(token);
 
+    console.log(props.momentId + " nando está aqui");
+
     axios
-      .post(
-        "https://kenziehub.herokuapp.com/users/techs",
+      .put(
+        `https://kenziehub.herokuapp.com/users/techs/${props.momentId}`,
         data,
         // console.log({ ...data }),
         // console.log(JSON.stringify({ ...data })),
@@ -44,34 +73,35 @@ function ModalPlus(props) {
         // console.log(token)
       )
       .then((response) => {
-        // console.log(response);
-        // console.log(data);
-        closeModal();
+        console.log(response);
+        console.log(data);
+
+        props.closeModalTech();
       })
       .catch((err) => console.log(err));
   };
 
-  function closeModal() {
-    props.setOpen(false);
-  }
-
-  if (props.open === true) {
+  if (props.openTech === true) {
     return (
       <>
         <Glass>
-          <StyledModal onSubmit={handleSubmit(onSubmitFunction)}>
+          <StyledModal
+            key={props.id}
+            id={props.id}
+            onSubmit={handleSubmit(onSubmitFunction)}
+          >
             <StyledModalTop>
               <div>
                 <h6>Cadastrar Tecnologia</h6>
               </div>
               <div>
-                <button onClick={() => closeModal()}>X</button>
+                <button onClick={() => props.closeModalTech()}>X</button>
               </div>
             </StyledModalTop>
             <SetPadding>
               <AlignInput>
                 <label>Nome</label>
-                <input placeholder="Tecnologia" {...register("title")} />
+                <input placeholder={props.title} value={props.title}></input>
                 <span> {errors.title && errors.title.message} </span>
               </AlignInput>
               <AlignInput>
@@ -82,9 +112,14 @@ function ModalPlus(props) {
                   <option value="Avançado">Avançado</option>
                 </select>
               </AlignInput>
-              <ButtonForm rosaSchema type="submit">
-                Cadastrar Tecnologia
-              </ButtonForm>
+              <DivButtons>
+                <ButtonEdit id={props.id} type="submit">
+                  Salvar Alterações
+                </ButtonEdit>
+                <ButtonExcluir onClick={() => onExcludeFunction()}>
+                  Excluir
+                </ButtonExcluir>
+              </DivButtons>
             </SetPadding>
           </StyledModal>
         </Glass>
@@ -95,4 +130,4 @@ function ModalPlus(props) {
   }
 }
 
-export default ModalPlus;
+export default ModalEdit;

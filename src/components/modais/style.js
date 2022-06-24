@@ -55,3 +55,12 @@ export const SetPadding = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+
+export const DivButtons = styled.div`
+  display: flex;
+
+  width: 20.25rem;
+  height: 3rem;
+
+  justify-content: space-between;
+`;

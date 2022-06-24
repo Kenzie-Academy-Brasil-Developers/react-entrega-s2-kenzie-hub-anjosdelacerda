@@ -1,4 +1,4 @@
-import { Container } from "../../styles/container";
+import { ContainerHome } from "../../styles/container";
 
 import Tech from "./tech";
 import { BoxAlign } from "./style";
@@ -13,6 +13,7 @@ import Menu from "./menu";
 import Header from "./header";
 
 import ModalPlus from "../../components/modais/modalPlus";
+import ModalEdit from "../../components/modais/modalEdit";
 
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -33,10 +34,24 @@ function Home() {
     setOpen(true);
   }
 
-  console.log(usuario);
-
   const [open, setOpen] = useState(false);
+  const [openTech, setOpenTech] = useState(false);
+  const [momentId, setMomentId] = useState("");
+
+  // console.log(momentId + "olha aqui nando");
+
   const [techs, setTechs] = useState([]);
+
+  function openModalTech(idTech) {
+    console.log(idTech);
+    setMomentId(idTech);
+    setOpenTech(true);
+  }
+
+  function closeModalTech() {
+    setOpenTech(false);
+    setMomentId("");
+  }
 
   useEffect(() => {
     axios
@@ -45,11 +60,24 @@ function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  console.log(usuario.techs);
+  useEffect(() => {
+    axios
+      .get(`https://kenziehub.herokuapp.com/users/${usuario.id}`)
+      .then((response) => setTechs(response.data.techs));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openTech]);
+
   return (
     <>
-      <Container>
+      <ContainerHome>
         <ModalPlus open={open} setOpen={setOpen} />
+        <ModalEdit
+          openTech={openTech}
+          serOpenTech={setOpenTech}
+          closeModalTech={closeModalTech}
+          momentId={momentId}
+          setMomentId={setMomentId}
+        />
         <Menu goBack={goBack} />
         <Header />
         <BoxAlign>
@@ -69,12 +97,15 @@ function Home() {
                   id={tech.id}
                   title={tech.title}
                   status={tech.status}
+                  openModalTech={openModalTech}
+                  openTech={openTech}
+                  setOpenTech={setOpenTech}
                 />
               ))}
             </ListStyled>
           </BoxGray>
         </BoxAlign>
-      </Container>
+      </ContainerHome>
     </>
   );
 }

@@ -11,6 +11,7 @@ export const BoxAlign = styled.div`
 
   flex-direction: column;
   align-items: center;
+  margin-bottom: 10rem;
 `;
 
 export const AsideMenu = styled.aside`
@@ -36,6 +37,8 @@ export const BoxGray = styled.div`
   border-radius: 4px;
 
   justify-content: center;
+
+  /* margin: 10px; */
 `;
 
 export const ListStyled = styled.ul`
@@ -45,7 +48,9 @@ export const ListStyled = styled.ul`
   justify-content: space-evenly;
 
   width: 45.813rem;
-  height: 23.063rem;
+  /* height: 23.063rem; */
+
+  margin: 18px;
 `;
 
 export const TechStyled = styled.li`
@@ -66,6 +71,8 @@ export const TechStyled = styled.li`
   font-weight: 700;
   font-size: 14.2123px;
   line-height: 24px;
+
+  margin: 10px;
 `;
 
 export const TechListDetails = styled.div`
