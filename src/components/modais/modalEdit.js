@@ -57,7 +57,7 @@ function ModalEdit(props) {
 
     // console.log(token);
 
-    console.log(props.momentId + " nando está aqui");
+    // console.log(props.momentId + " nando está aqui");
 
     axios
       .put(
@@ -73,8 +73,9 @@ function ModalEdit(props) {
         // console.log(token)
       )
       .then((response) => {
-        console.log(response);
-        console.log(data);
+        // console.log(props.momentId);
+        // console.log(response);
+        // console.log(data);
 
         props.closeModalTech();
       })
@@ -92,7 +93,7 @@ function ModalEdit(props) {
           >
             <StyledModalTop>
               <div>
-                <h6>Cadastrar Tecnologia</h6>
+                <h6>Tecnologia detalhes</h6>
               </div>
               <div>
                 <button onClick={() => props.closeModalTech()}>X</button>

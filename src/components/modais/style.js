@@ -9,7 +9,7 @@ export const Glass = styled.div`
   position: fixed;
 
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgba(0, 0, 0, 0.2);
 
   z-index: 10;
@@ -27,6 +27,11 @@ export const StyledModal = styled.form`
   justify-content: space-between;
 
   background: var(--cinzaFundo);
+
+  @media (max-width: 320px) {
+    width: 18.5rem;
+    height: 17.146rem;
+  }
 `;
 
 export const StyledModalTop = styled.div`
@@ -43,6 +48,36 @@ export const StyledModalTop = styled.div`
   justify-content: space-between;
 
   background: var(--cinzaMedio);
+
+  button {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+
+    color: var(--cinzaClaro);
+    background: var(--cinzaMedio);
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+  }
+
+  @media (max-width: 320px) {
+    width: 18.5rem;
+    height: 2.507rem;
+
+    button {
+      display: flex;
+      width: 1rem;
+      height: 1rem;
+
+      font-size: 9.63px;
+    }
+  }
 `;
 
 export const SetPadding = styled.div`
@@ -63,4 +98,9 @@ export const DivButtons = styled.div`
   height: 3rem;
 
   justify-content: space-between;
+
+  @media (max-width: 320px) {
+    width: 16.097rem;
+    height: 2.398rem;
+  }
 `;

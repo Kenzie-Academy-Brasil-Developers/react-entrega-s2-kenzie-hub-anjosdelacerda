@@ -66,6 +66,10 @@ function Login({ logged, setLogged }) {
     // }
   };
 
+  // if(logged === true){
+  //   history.push("/home")
+  // }
+
   return (
     <>
       <Container>

@@ -30,6 +30,17 @@ export const LoginStyle = styled.form`
     font-size: 10px;
     line-height: 26px;
   }
+
+  @media (max-width: 320px) {
+    width: 18.5rem;
+    height: 25.168rem;
+
+    h2 {
+      font-weight: 700;
+      font-size: 14.439px;
+      line-height: 22px;
+    }
+  }
 `;
 
 export const AlignInput = styled.div`
@@ -61,6 +72,20 @@ export const AlignInput = styled.div`
     padding: 5px 5px;
 
     color: var(--cinzaFonte);
+  }
+
+  @media (max-width: 320px) {
+    width: 16.5rem;
+    height: 5.293rem;
+
+    label {
+      font-size: 9.772px;
+    }
+
+    input {
+      width: 16.41rem;
+      height: 2.406rem;
+    }
   }
 `;
 

@@ -30,6 +30,13 @@ export const CadastroStyle = styled.form`
     font-size: 10px;
     line-height: 26px;
   }
+
+  @media (max-width: 320px) {
+    width: 18.489rem;
+    height: 44.373rem;
+
+    align-items: flex-start;
+  }
 `;
 
 export const AlignInput = styled.div`
@@ -64,6 +71,21 @@ export const AlignInput = styled.div`
 
     color: var(--cinzaFonte);
   }
+
+  @media (max-width: 320px) {
+    width: 16.241;
+    height: 3.748rem;
+
+    label {
+      font-size: 9.73988px;
+    }
+
+    input,
+    select {
+      width: 16.487rem;
+      height: 2.399rem;
+    }
+  }
 `;
 
 export const MiniBox = styled.div`
@@ -73,4 +95,15 @@ export const MiniBox = styled.div`
 
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 320px) {
+    width: 18.489rem;
+
+    div {
+      img {
+        width: 6.099rem;
+        height: 1.056rem;
+      }
+    }
+  }
 `;

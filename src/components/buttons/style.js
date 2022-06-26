@@ -20,6 +20,11 @@ export const Content = styled.button`
   border-radius: 4.06066px;
 
   cursor: pointer;
+
+  @media (max-width: 320px) {
+    width: 16.224rem;
+    height: 2.406rem;
+  }
 `;
 
 export const MiniContent = styled.button`
@@ -40,6 +45,13 @@ export const MiniContent = styled.button`
   height: 2.507rem;
 
   cursor: pointer;
+
+  @media (max-width: 320px) {
+    width: 4.971rem;
+    height: 1.997rem;
+
+    font-size: 9.59437px;
+  }
 `;
 
 export const IconContent = styled.button`
@@ -56,6 +68,11 @@ export const IconContent = styled.button`
   img {
     /* width: 1rem;
     height: 0.5rem; */
+  }
+
+  @media (max-width: 320px) {
+    width: 0.9rem;
+    height: 0.7rem;
   }
 `;
 
@@ -78,6 +95,11 @@ export const ContentForEdit = styled.button`
 
   border-radius: 4px;
   cursor: pointer;
+
+  @media (max-width: 320px) {
+    width: 10.193rem;
+    height: 2.398rem;
+  }
 `;
 
 export const ContentForExcluir = styled.button`
@@ -99,4 +121,9 @@ export const ContentForExcluir = styled.button`
 
   border-radius: 4px;
   cursor: pointer;
+
+  @media (max-width: 320px) {
+    width: 4.897rem;
+    height: 2.398rem;
+  }
 `;

@@ -20,7 +20,7 @@ import axios from "axios";
 // import { useHistory } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 
-function Cadastro() {
+function Cadastro(props) {
   const history = useHistory();
 
   function goBack() {
@@ -43,7 +43,7 @@ function Cadastro() {
       .string()
       .required("senha obrigatória")
       .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/,
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{6,}$/,
         "a senha precisa de letras maiúsculas e minúsculas, números e um simbolo"
       ),
     confirmedPassword: yup
@@ -87,6 +87,10 @@ function Cadastro() {
       .catch((err) => console.log(err));
   };
 
+  // if (props.logged === true) {
+  //   history.push("/home");
+  // }
+
   return (
     <>
       <ContainerMaior>
@@ -112,15 +116,24 @@ function Cadastro() {
           </AlignInput>
           <AlignInput>
             <label>Senha</label>
-            <input placeholder="Senha" {...register("password")} />
+            <input
+              type="password"
+              placeholder="Senha"
+              {...register("password")}
+            />
             <span> {errors.password && errors.password.message} </span>
           </AlignInput>
           <AlignInput>
             <label>Confirme a senha</label>
             <input
+              type="password"
               placeholder="Confirmar senha"
               {...register("confirmedPassword")}
             />
+            <span>
+              {" "}
+              {errors.confirmedPassword && errors.confirmedPassword.message}
+            </span>
           </AlignInput>
 
           <AlignInput>

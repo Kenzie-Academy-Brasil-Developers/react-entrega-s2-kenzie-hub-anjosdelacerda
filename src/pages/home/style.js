@@ -25,6 +25,17 @@ export const AsideMenu = styled.aside`
   justify-content: space-between;
 
   margin-bottom: 1rem;
+
+  @media (max-width: 320px) {
+    display: flex;
+    width: 18.388rem;
+    height: 2rem;
+
+    font-size: 16px;
+    line-height: 18px;
+
+    align-items: center;
+  }
 `;
 
 export const BoxGray = styled.div`
@@ -39,6 +50,10 @@ export const BoxGray = styled.div`
   justify-content: center;
 
   /* margin: 10px; */
+
+  @media (max-width: 320px) {
+    width: 18.438rem;
+  }
 `;
 
 export const ListStyled = styled.ul`
@@ -51,6 +66,10 @@ export const ListStyled = styled.ul`
   /* height: 23.063rem; */
 
   margin: 18px;
+
+  @media (max-width: 320px) {
+    width: 18.4rem;
+  }
 `;
 
 export const TechStyled = styled.li`
@@ -73,6 +92,11 @@ export const TechStyled = styled.li`
   line-height: 24px;
 
   margin: 10px;
+
+  @media (max-width: 320px) {
+    width: 17.438rem;
+    height: 3.046rem;
+  }
 `;
 
 export const TechListDetails = styled.div`
@@ -88,6 +112,13 @@ export const TechListDetails = styled.div`
   line-height: 22px;
 
   color: var(--cinzaClaro);
+
+  @media (max-width: 320px) {
+    font-size: 14.2123px;
+    line-height: 24px;
+
+    width: 7rem;
+  }
 `;
 
 export const NavBar = styled.div`
@@ -98,6 +129,20 @@ export const NavBar = styled.div`
 
   justify-content: space-around;
   align-items: center;
+  border-bottom: 1px solid var(--cinzaMedio);
+
+  @media (max-width: 320px) {
+    width: 18.489rem;
+
+    div {
+      div {
+        img {
+          width: 6.099rem;
+          height: 1.056rem;
+        }
+      }
+    }
+  }
 `;
 
 export const Welcome = styled.div`
@@ -109,11 +154,25 @@ export const Welcome = styled.div`
   justify-content: space-around;
   align-items: center;
 
+  margin: 1rem;
+
+  border-bottom: 1px solid var(--cinzaMedio);
+
   span {
     font-weight: 400;
     font-size: 12px;
     line-height: 22px;
     color: var(--cinzaClaro);
+  }
+
+  @media (max-width: 320px) {
+    height: 8.188rem;
+
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+    margin-left: 2.5rem;
   }
 `;
 
@@ -130,4 +189,9 @@ export const ButtonPlus = styled.button`
   font-weight: 700;
 
   background: var(--cinzaMedio);
+
+  @media (max-width: 320px) {
+    height: 2rem;
+    width: 2.031rem;
+  }
 `;

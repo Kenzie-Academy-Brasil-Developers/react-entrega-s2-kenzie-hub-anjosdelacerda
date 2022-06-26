@@ -19,7 +19,7 @@ function Tech(props) {
           {props.status}
           <ButtonIcon
             id={props.id}
-            onClick={() => props.openModalTech(props.id)}
+            onClick={() => props.openModalTech(props.id, props.title)}
           >
             <img src={IconTech} alt="Edit" />
           </ButtonIcon>
