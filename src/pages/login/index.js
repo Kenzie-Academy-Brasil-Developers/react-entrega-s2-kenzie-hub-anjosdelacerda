@@ -10,6 +10,8 @@ import ImagemLogo from "../../components/img/Logo.png";
 
 import ButtonForm from "../../components/buttons/buttons";
 
+import { toast } from "react-toastify";
+
 import axios from "axios";
 
 // import Logotipo from "../../components/img";
@@ -57,9 +59,10 @@ function Login({ logged, setLogged }) {
           JSON.stringify(response.data.user)
         );
         setLogged(true);
+        toast.success(`Bem vindo, ${response.data.user.name}`);
         goToPage("/home");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error("usuário ou senha incorretos"));
 
     // if (logged) {
     //   return <Redirect to="/home" />;

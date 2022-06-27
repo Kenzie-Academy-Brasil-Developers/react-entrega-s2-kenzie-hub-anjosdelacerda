@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function ModalPlus(props) {
   const formSchema = yup.object().shape({
@@ -46,9 +47,10 @@ function ModalPlus(props) {
       .then((response) => {
         // console.log(response);
         // console.log(data);
+        toast.success("Tecnologia adicionada com sucesso");
         closeModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error("o campos não podem estar vazios"));
   };
 
   function closeModal() {

@@ -16,6 +16,7 @@ import ButtonBack from "../../components/buttons/miniButton";
 import ImagemLogo from "../../components/img/Logo.png";
 
 import axios from "axios";
+import { toast } from "react-toastify";
 
 // import { useHistory } from "react-router-dom";
 // import { useParams } from "react-router-dom";
@@ -82,9 +83,14 @@ function Cadastro(props) {
         console.log(data);
 
         // window.localStorage.setItem("token", response.data.token);
+        toast.success("usuário cadastrado com sucesso");
         history.push("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        toast.error(
+          "Erro ao cadastrar conta, verifique os campos e tente novamente."
+        )
+      );
   };
 
   // if (props.logged === true) {

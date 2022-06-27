@@ -15,6 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function ModalEdit(props) {
   const formSchema = yup.object().shape({
@@ -47,6 +48,7 @@ function ModalEdit(props) {
       )
       .then((response) => {
         console.log(response);
+        toast.success("tecnolgia excluída com sucesso");
         props.closeModalTech();
       })
       .catch((err) => console.log(err));
@@ -76,10 +78,11 @@ function ModalEdit(props) {
         // console.log(props.momentId);
         // console.log(response);
         // console.log(data);
+        toast.success("Tecnologia atualizada com sucesso");
 
         props.closeModalTech();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error("o campo de nome deve estar vazio"));
   };
 
   if (props.openTech === true) {
